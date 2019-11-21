@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en" class="pink-theme">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="Maxartkiller">
+
+    <title>About Us</title>
+
+    <!-- Material design icons CSS -->
+    <link rel="stylesheet" href="../../css/material-icons.css">
+
+    <!-- Roboto fonts CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Swiper CSS -->
+    <link href="../../css/swiper.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/style.css" rel="stylesheet">
+</head>
+
+<body onload="SetCartIemNumber()">
+    <!-- Loader -->
+    <div class="row no-gutters vh-100 loader-screen">
+        <div class="col align-self-center text-white text-center">
+            <img src="../../images/logo.png" alt="logo">
+            <h1><span class="font-weight-light">Find</span>Your Item</h1>
+            <div class="laoderhorizontal">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <!-- Loader ends -->
+
+    <div class="wrapper pb-0">
+        <!-- header -->
+        <div class="header">
+            <div class="row no-gutters">
+                <div class="col-auto">
+                    <a href="../../index.html" class="btn  btn-link text-dark"><i class="material-icons">navigate_before</i></a>
+                </div>
+                <div class="col text-center"><img src="../../images/logo-header.png" alt="" class="header-logo"></div>
+                  
+            </div>
+        </div>
+        <!-- header ends -->
+
+        <div class="container">
+            <!-- page content here -->
+            <section class="jumbotron text-center mt-3 bg-white shadow-sm">
+                <div class="container">
+                    <h1 class="jumbotron-heading font-weight-normal">Find<b>Your Item</b></h1>
+                    <p class="lead text-muted">
+                    Find Your Item is a mobile application that is intended for the sale and purchase of articles
+                    </p>
+                    <p>
+                        <a href="aboutus.html#" class="btn btn-primary my-2">Call to action</a>
+                    </p>
+                </div>
+            </section>
+            <br>
+            <h3 class="mb-3">We are</h3>
+            <p>
+            we are @mastersofcode a company specialize in software development mainly in mobile and web development, machine learning , AI , deep learning
+            </p>
+            <br>
+            <br>
+            <h3 class="mb-3">Our Expertise are:</h3>
+            <ul>
+                <li>Web Application</li>
+                <li>Mobile Application</li>
+            </ul>
+
+            <br>
+
+            <footer class="py-4 border-top">
+                <div class="row">
+                    <div class="col-7 col-md">
+                        <h5>Resources</h5>
+                        <ul class="list-unstyled text-small">
+                            <li><a class="text-muted" href="aboutus.html#">Resource</a></li>
+                            <li><a class="text-muted" href="aboutus.html#">Resource name</a></li>
+                            <li><a class="text-muted" href="aboutus.html#">Another resource</a></li>
+                            <li><a class="text-muted" href="aboutus.html#">Final resource</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-5 col-md">
+                        <h5>About</h5>
+                        <ul class="list-unstyled text-small">
+                            <li><a class="text-muted" href="aboutus.html#">Team</a></li>
+                            <li><a class="text-muted" href="aboutus.html#">Locations</a></li>
+                            <li><a class="text-muted" href="aboutus.html#">Privacy</a></li>
+                            <li><a class="text-muted" href="aboutus.html#">Terms</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+
+            <!-- page content ends -->
+        </div>
+        <div class="row bg-white mx-0">
+            <div class="container">
+                <footer class="text-muted py-4">
+
+                    <p class="float-right">
+                        <a href="aboutus.html#">Back to top</a>
+                    </p>
+                    <p>FindYourItem is © Cheun@DA</p>
+                    <p> <a href="../../index.html">Visit the homepage</a></p>
+
+                </footer>
+            </div>
+        </div>
+
+
+    </div>
+    
+    <div class="wrapper">
+     <div class="footer">
+            <div class="no-gutters">
+                <div class="col-auto mx-auto">
+                    <div class="row no-gutters justify-content-center">
+                        <div class="col-auto">
+                            <a href="../../index.html" class="btn btn-link-default">
+                                <i class="material-icons">store_mall_directory</i>
+                            </a>
+                        </div>
+                        <div class="col-auto">
+                            <a href="aboutus.html" class="btn btn-link-default active">
+                                <i class="material-icons">info</i>
+                            </a>
+                        </div>
+                        <div class="col-auto">
+                            <a href="#"  class="btn btn-default shadow centerbutton" onclick="GoToCartFromPages()">
+                                <i class="material-icons">local_mall</i>
+                                 <span class="cart_counter" id="nbritem"></span>
+                            </a>
+                        </div>
+                        <div class="col-auto">
+                            <a href="contactus.html" class="btn btn-link-default">
+                                 <i class="material-icons">contact_mail</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jquery, popper and bootstrap js -->
+    <script src="../../js/jquery-3.3.1.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+
+    <!-- swiper js -->
+    <script src="../../js/swiper.min.js"></script>
+
+    <!-- template custom js -->
+    <script src="../../js/main.js"></script>
+
+    <!-- page level script -->
+    <script>
+        $(window).on('load', function() {
+
+        });
+
+    </script>
+    
+    <script type="text/javascript" src="../../js/action/itemlist.js"></script>
+<script type="text/javascript" src="../../js/action/cart.js"></script>
+<script type="text/javascript" src="../../js/other/cartback.js"></script>
+<script type="text/javascript" src="../../js/action/base.js"></script>
+<script type="text/javascript" src="../../js/action/login.js"></script>
+    
+</body>
+
+</html>

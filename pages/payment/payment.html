@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en" class="pink-theme">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
+    <!--  
+    <meta http-equiv="Content-Security-Policy" content="default-src *; img-src https://www.MY-SERVER.com 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *">
+    <meta content ="img-src https://www.MY-SERVER.com 'self' data:;">
+    <meta http-equiv="Content-Security-Policy" content="img-src ../../images/favicon.ico data: *">
+    -->
+  
+    
+    <meta name="description" content="">
+    <meta name="author" content="Maxartkiller">
+   <link rel="shorcut icon" href="../../images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="../../images/favicon.ico" type="image/x-icon" />
+    <title>Payment · Of Item</title>
+
+    <!-- Material design icons CSS -->
+    
+    <link rel="stylesheet" href="../../css/material-icons.css">
+
+    <!-- Roboto fonts CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Swiper CSS -->
+    <link href="../../css/swiper.min.css" rel="stylesheet">
+
+    <!-- Chosen multiselect CSS -->
+    <link href="../../css/chosen.min.css" rel="stylesheet">
+
+    <!-- nouislider CSS -->
+    <link href="../../css/nouislider.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/style.css" rel="stylesheet">
+    
+        <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+</head>
+
+<body onload="setTotalMontantPayment()">
+
+
+    <div class="row no-gutters vh-100 loader-screen">
+        <div class="col align-self-center text-white text-center">
+            <img src="../../images/logo.png" alt="logo">
+            <h1><span class="font-weight-light">Find Your</span>Item</h1>
+            <div class="laoderhorizontal"><div></div><div></div><div></div><div></div></div>
+        </div>
+    </div>
+    
+    <div class="wrapper">
+        <div class="header">
+            <div class="row no-gutters">
+               <div class="col-auto">
+                    <a href="../cart/cart.html" class="btn  btn-link text-dark" onclick="FromCartGoToHome()""><i class="material-icons">navigate_before</i></a>
+                </div>
+                <div class="col text-center"><img src="../../images/logo-header.png" alt="" class="header-logo"></div>
+               
+            </div>
+        </div>
+        <div class="container">
+
+            <div class="card mb-4 border-0 shadow-sm border-top-dashed">
+                <div class="card-body text-center">
+                    <p class="text-secondary my-1">Total Amount</p>
+                    <h3 class="mb-0" id="totalamount"></h3>
+                </div>
+            </div>
+
+            <p class="text-center text-secondary mb-0">Pay with</p>
+
+            <div class="btn-group mt-4 w-100" role="group" aria-label="Basic example">
+               
+            </div>
+
+             <div class="text-center text-secondary mb-0" id="paypal-button"></div>
+                
+                
+            </div>
+          
+            <br>
+            <br>
+
+        </div>
+        <div class="footer">
+            <div class="no-gutters">
+                <div class="col-auto mx-auto">
+                    <div class="row no-gutters justify-content-center">
+                        
+                        
+                        <div class="col-auto">
+                            <a href="../cart/cart.html" class="btn btn-default shadow centerbutton">
+                                <i class="material-icons">local_mall</i>
+                                <span class="cart_counter" id="cartnumberofitem"></span>
+                            </a>
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jquery, popper and bootstrap js -->
+    <script src="../../js/jquery-3.3.1.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+
+    <!-- swiper js -->
+    <script src="../../js/swiper.min.js"></script>
+
+    <!-- nouislider js -->
+    <script src="../../js/nouislider.min.js"></script>
+
+    <!-- chosen multiselect js -->
+    <script src="../../js/chosen.jquery.min.js"></script>
+
+    <!-- template custom js -->
+    <script src="../../js/main.js"></script>
+
+    <!-- page level script -->
+    <script>
+        $(window).on('load', function() {
+
+        });
+
+    </script>
+    
+    <!-- custom script -->
+    <script type="text/javascript" src="../../js/config.js"></script>
+    <script type="text/javascript" src="../../js/action/base.js"></script>
+    <script type="text/javascript" src="../../js/action/login.js"></script>
+    <script type="text/javascript" src="../../js/action/itemlist.js"></script>
+    <script type="text/javascript" src="../../js/action/cart.js"></script>
+    <script type="text/javascript" src="../../js/action/payment.js"></script>
+    <script type="text/javascript" src="../../js/other/paymentback.js"></script>
+</body>
+
+</html>

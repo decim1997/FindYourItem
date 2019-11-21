@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en" class="pink-theme">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="Maxartkiller">
+
+    <title>Find Your · Item Cart</title>
+
+    <!-- Material design icons CSS -->
+    <link rel="stylesheet" href="../../css/material-icons.css">
+
+    <!-- Roboto fonts CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Swiper CSS -->
+    <link href="../../css/swiper.min.css" rel="stylesheet">
+
+    <!-- Chosen multiselect CSS -->
+    <link href="../../css/chosen.min.css" rel="stylesheet">
+
+    <!-- nouislider CSS -->
+    <link href="../../css/nouislider.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/style.css" rel="stylesheet">
+</head>
+
+<body onload="ShowCartItem();">
+    <div class="row no-gutters vh-100 loader-screen">
+        <div class="col align-self-center text-white text-center">
+            <img src="../../images/logo-header.png" alt="logo">
+            <h1><span class="font-weight-light">FindYour</span>Item</h1>
+            <div class="laoderhorizontal"><div></div><div></div><div></div><div></div></div>
+        </div>
+    </div>
+    
+    <div class="container">
+     <div class="modal fade" id="emptycart" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="emptycartlabel">Empty Cart</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                   Do you want to empty your cart?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary" onclick="EmptyAllCart()">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="container">
+      <div class="modal fade" id="loginmodal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+            <div class="modal-content shadow">
+                <div class="modal-header">
+                    <h5 class="header-title mb-0">Login</h5>
+                </div>
+                <div class="modal-body text-center pr-4 pl-4">
+                    <div class="form-group text-left float-label">
+                     <!-- <label for="textinput" id="lbpseudo" class="customlb">Text input</label> -->
+                      <input type="text" class="form-control  text-center" id="Pseudo" placeholder="Pseudo" required>
+                    </div>
+                    <div class="form-group text-left float-label">
+                   	  <!--   <label for="textinput" id="lbpassword">Text input</label> -->
+                        <input type="password" class="form-control text-center" id="Password" placeholder="Password" required>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-default btn-rounded btn-block col" onclick="Login('cart')">Login</button>
+                        <br>
+                        <a href="modal.html" data-toggle="modal" data-target="#registermodal">Not you? Sign in as different user</a>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    <div class="container">
+           <div class="modal fade" id="registermodal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+            <div class="modal-content shadow">
+                <div class="modal-header">
+                    <h5 class="header-title mb-0">Register</h5>
+                </div>
+                <div class="modal-body text-center pr-4 pl-4">
+                	   <div class="form-group text-left float-label">
+                          <input type="text" class="form-control" id="UserPseudo" placeholder="Pseudo" required>
+                    </div>
+                    <div class="form-group text-left float-label">
+                          <input type="email" class="form-control" id="UserEmail" placeholder="Email" required>
+                    </div>
+                    <div class="form-group text-left float-label">
+                          <input type="number" class="form-control" id="UserPhoneNumber" placeholder="PhoneNumber" required>
+                    </div>
+                    
+                    <div class="form-group text-left float-label">
+                        <input type="password" class="form-control text-center" id="UserPassword" placeholder="Password"  required>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-default btn-rounded btn-block col" onclick="UserRegistration()">Register</button>
+                        
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+        </div>
+    <div class="wrapper">
+     
+           
+        <div class="header">
+            <div class="row no-gutters">
+                 <div class="col-auto">
+                    <a href="#" class="btn  btn-link text-dark" onclick="FromCartGoToHome()""><i class="material-icons">navigate_before</i></a>
+                </div>
+                <div class="col text-center"><img src="../../images/logo-header.png" alt="" class="header-logo"></div>
+                <div class="col-auto">
+                    <a href="profile.html" class="btn  btn-link text-dark"><i class="material-icons">account_circle</i></a>
+                </div>
+            </div>
+        </div>
+        <div class="container" id="cartcontainer">
+            <div class="subtitle h6">
+                <div class="d-inline-block">
+                    My Cart<br>
+                    <p class="small text-mute" id="cartnumberofitem"></p>
+                </div>
+                
+                
+         
+            </div>
+            
+            
+           
+            <div class="row">
+                <div class="col-12 px-0">
+                    <ul class="list-group list-group-flush mb-4" id="itemcarttable">
+                     
+                    </ul>                    
+                </div>
+            </div>
+            
+    
+             
+            <div class="card mb-4 border-0 shadow-sm border-top-dashed" id="cardamount">
+             <button type="button" class="btn btn-lg btn-default text-white my-2" data-toggle="modal" data-target=#emptycart>
+                Empty Cart
+            </button>
+            
+                <div class="card-body text-center">
+                    <p class="text-secondary my-1">Total Amount</p>
+                    <h3 class="mb-0" id="cartitemtotalprice"></h3>
+                    <br>
+                    <button class="btn btn-lg btn-default text-white btn-block btn-rounded shadow" onclick="GoToPayement()"><span>Checkout</span><i class="material-icons">arrow_forward</i></button>
+                </div>
+                
+            </div>
+
+
+
+        </div>
+        <div class="footer">
+            <div class="no-gutters">
+                <div class="col-auto mx-auto">
+                    <div class="row no-gutters justify-content-center">
+                        
+                        <div class="col-auto">
+                            <a href="cart.html" class="btn btn-default shadow centerbutton">
+                                <i class="material-icons">local_mall</i>
+                                <span class="cart_counter" id="nbritem"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <!-- jquery, popper and bootstrap js -->
+    <script src="../../js/jquery-3.3.1.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+
+    <!-- swiper js -->
+    <script src="../../js/swiper.min.js"></script>
+
+    <!-- nouislider js -->
+    <script src="../../js/nouislider.min.js"></script>
+
+    <!-- chosen multiselect js -->
+    <script src="../../js/chosen.jquery.min.js"></script>
+
+    <!-- template custom js -->
+    <script src="../../js/main.js"></script>
+
+    <!-- page level script -->
+    <script>
+        $(window).on('load', function() {
+
+        });
+
+    </script>
+    
+    <!-- custom script -->
+    <script type="text/javascript" src="../../js/action/base.js"></script>
+    <script type="text/javascript" src="../../js/action/itemlist.js"></script>
+    <script type="text/javascript" src="../../js/action/login.js"></script>
+      <script type="text/javascript" src="../../js/action/payment.js"></script>
+    <script type="text/javascript" src="../../js/action/cart.js"></script>
+    <script type="text/javascript" src="../../js/other/cartback.js"></script>
+  </body>
+
+</html>

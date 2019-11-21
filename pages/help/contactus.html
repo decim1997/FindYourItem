@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en" class="pink-theme">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="Maxartkiller">
+
+    <title>Contact Us</title>
+
+    <!-- Material design icons CSS -->
+    <link rel="stylesheet" href="../../css/material-icons.css">
+
+    <!-- Roboto fonts CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Swiper CSS -->
+    <link href="../../css/swiper.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/style.css" rel="stylesheet">
+</head>
+
+<body onload="SetCartIemNumber()">
+    <!-- Loader -->
+    <div class="row no-gutters vh-100 loader-screen">
+        <div class="col align-self-center text-white text-center">
+            <img src="../../images/logo.png" alt="logo">
+            <h1><span class="font-weight-light">Find</span>Your Item</h1>
+            <div class="laoderhorizontal">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <!-- Loader ends -->
+
+    <div class="wrapper">
+
+        <!-- header -->
+        <div class="header">
+            <div class="row no-gutters">
+                <div class="col-auto">
+                    <a href="../../index.html" class="btn  btn-link text-dark"><i class="material-icons">navigate_before</i></a>
+                </div>
+                <div class="col text-center"><img src="../../images/logo-header.png" alt="" class="header-logo"></div>
+            </div>
+        </div>
+        <!-- header ends -->
+
+        <div class="container">
+            <!-- page content here -->
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <div class="form-group has-error  float-label">
+                        <input id="visitorfirstname" type="text" name="name" class="form-control is-invalid" required="required">
+                        <label class="form-control-label" for="form_name" id="lbvisitorfirstname">Firstname *</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group float-label">
+                        <input id="visitorlastname" type="text" name="surname" class="form-control" required="required">
+                        <label class="form-control-label" for="form_lastname" id="lbvisitorlastname">Lastname *</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group float-label">
+                        <input id="visitoremail" type="email" name="email" class="form-control" required="required">
+                        <label class="form-control-label" for="form_email" id="lbvisitoremail">Email *</label>
+                    </div>
+                </div>
+                    <div class="col-md-6">
+                    <div class="form-group float-label">
+                        <input id="mailobject" type="text" name="surname" class="form-control" required="required">
+                        <label class="form-control-label" for="form_lastname" id="lbmailobject">Object *</label>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group float-label">                        
+                        <textarea id="mailcontent" name="message" class="form-control" rows="4" required="required" data-error="Please, leave us a message."></textarea>
+                        <label class="form-control-label" for="form_message" id="lbmailcontent">Message *</label>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="col-md-12 text-center mt-3">
+                    <button class="btn btn-default btn-rounded btn-lg shadow" onclick="SendMessage()">Send message</button>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <p class="text-muted">
+                        <strong>*</strong> These fields are required.
+                </div>
+            </div>
+
+
+            <!-- page content ends -->
+        </div>
+
+        <!-- footer -->
+        <div class="footer">
+            <div class="no-gutters">
+                <div class="col-auto mx-auto">
+                    <div class="row no-gutters justify-content-center">
+                        <div class="col-auto">
+                            <a href="../../index.html" class="btn btn-link-default">
+                                <i class="material-icons">store_mall_directory</i>
+                            </a>
+                        </div>
+                        <div class="col-auto">
+                            <a href="aboutus.html" class="btn btn-link-default">
+                                <i class="material-icons">info</i>
+                            </a>
+                        </div>
+                        <div class="col-auto">
+                            <a href="#"  class="btn btn-default shadow centerbutton" onclick="GoToCartFromPages()">
+                                <i class="material-icons">local_mall</i>
+                                 <span class="cart_counter" id="nbritem"></span>
+                            </a>
+                        </div>
+                        <div class="col-auto">
+                            <a href="#contactus.html" class="btn btn-link-default active">
+                                 <i class="material-icons">contact_mail</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer ends -->
+    </div>
+
+    <!-- jquery, popper and bootstrap js -->
+    <script src="../../js/jquery-3.3.1.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+
+    <!-- swiper js -->
+    <script src="../../js/swiper.min.js"></script>
+
+    <!-- template custom js -->
+    <script src="../../js/main.js"></script>
+
+    <!-- page level script -->
+    <script>
+        $(window).on('load', function() {
+
+        });
+
+    </script>
+ 
+<script type="text/javascript" src="../../js/action/base.js"></script>
+<script type="text/javascript" src="../../js/action/itemlist.js"></script>
+<script type="text/javascript" src="../../js/action/cart.js"></script>
+ <script type="text/javascript" src="../../js/action/login.js"></script>  
+<script type="text/javascript" src="../../js/other/cartback.js"></script>
+<script type="text/javascript" src="../../js/action/contactus.js"></script>
+
+</body>
+
+</html>

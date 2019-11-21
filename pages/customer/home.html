@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en" class="pink-theme">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="Maxartkiller">
+
+    <title>Find Your · Item</title>
+
+    <!-- Material design icons CSS -->
+    <link rel="stylesheet" href="../../css/material-icons.css">
+
+    <!-- Roboto fonts CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Swiper CSS -->
+    <link href="../../css/swiper.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/style.css" rel="stylesheet">
+</head>
+
+<body onload="LoadItems();DisplayUserSession();">
+
+
+    <div class="container">
+     <div class="modal fade" id="exitapp" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exitapplabel">Exit Application</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                   <P>Do you want to exit the application?</P>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary" onclick="ExitApplication()">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+         <div class="modal fade" id="logoutmodal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutmodallabel">Logout</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                  Do you want to Logout?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary" onclick="LogOut()">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    </div>
+    
+    <div class="row no-gutters vh-100 loader-screen">
+        <div class="col align-self-center text-white text-center">
+            <img src="../../images/logo.png" alt="logo">
+            <h1><span class="font-weight-light">Find</span>Your Item</h1>
+            <div class="laoderhorizontal">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="sidebar">
+        <div class="text-center">
+            <div class="figure-menu shadow">
+                <figure><img src="" alt="" id="memberpicture"></figure>
+            </div>
+            <h5 class="mb-1 " id="memberpseudo"></h5>
+            <p class="text-mute small" id="memberemail"></p>
+        </div>
+        <br>
+        <div class="row mx-0">
+            <div class="col">
+                <div class="card mb-3 border-0 shadow-sm bg-template-light">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <p class="text-secondary small mb-0">Free Coupon</p>
+                                <h6 class="text-dark my-0"></h6>
+                            </div>
+                            <div class="col-auto">
+                                <button class="btn btn-default button-rounded-36 shadow"><i class="material-icons">add</i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h5 class="subtitle text-uppercase"><span>Menu</span></h5>
+                <div class="list-group main-menu">
+                    <a href="../item/additem.html" class="list-group-item list-group-item-action active"><i class="material-icons">add</i>New Item</a>
+                    <a href="../announce/addanounce.html" class="list-group-item list-group-item-action"><i class="material-icons">add</i>New Announce</a>
+                    <a href="../chat/chat.html?status=replies" class="list-group-item list-group-item-action">Notification <span class="badge badge-dark text-white"></span></a>
+                    <a href="#" class="list-group-item list-group-item-action"  onclick="GoToCart()"><i class="material-icons">local_mall</i> Cart</a>
+                    <a href="#" class="list-group-item list-group-item-action" data-toggle="modal" data-target=#logoutmodal>Logout</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="wrapper">
+        <div class="header">
+            <div class="row no-gutters">
+                <div class="col-auto">
+                    <button class="btn  btn-link text-dark menu-btn"><img src="../../images/menu.png" alt=""><span class="new-notification"></span></button>
+                </div>
+                <div class="col text-center"><img src="../../images/logo-header.png" alt="" class="header-logo"></div>
+                <div class="col-auto">
+                    <a href="../profile/profile.html" class="btn  btn-link text-dark"><i class="material-icons">account_circle</i></a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <input type="text" class="form-control form-control-lg search my-3" placeholder="Enter the Iten Name" id="SearchBartinput" onkeyup="SearchItemByname()">
+	<select id="agileinfo-nav_search" name="agileinfo_search" class="border"  onchange="SearcheItemByCategory()">
+							<option value="All Categories">All Categories</option>
+							<option value="Telephone & Tablets">Telephone & Tablets</option>
+							<option value="Headphones">Headphones</option>
+							<option value="Computers">Computers</option>
+							<option value="Appliances">Appliances</option>
+							<option value="Tv">Tv</option>
+							<option value="Cameras & Camcorders">Cameras & Camcorders</option>
+							<option value="Home Audio & Theater">Home Audio & Theater</option>
+						</select>
+            <h6 class="subtitle">Categories</h6>
+            <div class="row">
+                <!-- Swiper -->
+                <div class="swiper-container small-slide">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-body">
+                                    <div class="row no-gutters h-100">
+                                        <img src="../../images/orange.png" alt="" class="small-slide-right">
+                                        <div class="col-8">
+                                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
+                                            <a href="all-products.html" class="text-dark mb-1 mt-2 h6 d-block">Citrus </a>
+                                            <p class="text-secondary small">Oranges, Grapefruit, Mandarins</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-body">
+                                    <div class="row no-gutters h-100">
+                                        <img src="../../images/banana-small.png" alt="" class="small-slide-right">
+                                        <div class="col-8">
+                                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite</i></button>
+                                            <a href="all-products.html" class="text-dark mb-1 mt-2 h6 d-block">Tropical </a>
+                                            <p class="text-secondary small">Bananas, Mangoes</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-body">
+                                    <div class="row no-gutters h-100">
+                                        <img src="../../images/grapes.png" alt="" class="small-slide-right">
+                                        <div class="col-9">
+                                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
+                                            <a href="all-products.html" class="text-dark mb-1 mt-2 h6 d-block">Berries</a>
+                                            <p class="text-secondary small">Strawberries, Raspberries, Blueberries</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-body">
+                                    <div class="row no-gutters h-100">
+                                        <img src="../../images/orange.png" alt="" class="small-slide-right">
+                                        <div class="col-8">
+                                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
+                                            <a href="all-products.html" class="text-dark mb-1 mt-2 h6 d-block">Citrus </a>
+                                            <p class="text-secondary small">Oranges, Grapefruit, Mandarins</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-body">
+                                    <div class="row no-gutters h-100">
+                                        <img src="../../images/banana-small.png" alt="" class="small-slide-right">
+                                        <div class="col-8">
+                                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite</i></button>
+                                            <a href="all-products.html" class="text-dark mb-1 mt-2 h6 d-block">Tropical </a>
+                                            <p class="text-secondary small">Bananas, Mangoes</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-body">
+                                    <div class="row no-gutters h-100">
+                                        <img src="../../images/grapes.png" alt="" class="small-slide-right">
+                                        <div class="col-9">
+                                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
+                                            <a href="all-products.html" class="text-dark mb-1 mt-2 h6 d-block">Berries</a>
+                                            <p class="text-secondary small">Strawberries, Raspberries, Blueberries</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-body">
+                                    <div class="row no-gutters h-100">
+                                        <img src="../../images/orange.png" alt="" class="small-slide-right">
+                                        <div class="col-8">
+                                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
+                                            <a href="all-products.html" class="text-dark mb-1 mt-2 h6 d-block">Citrus </a>
+                                            <p class="text-secondary small">Oranges, Grapefruit, Mandarins</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-body">
+                                    <div class="row no-gutters h-100">
+                                        <img src="../../images/banana-small.png" alt="" class="small-slide-right">
+                                        <div class="col-8">
+                                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite</i></button>
+                                            <a href="all-products.html" class="text-dark mb-1 mt-2 h6 d-block">Tropical </a>
+                                            <p class="text-secondary small">Bananas, Mangoes</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-body">
+                                    <div class="row no-gutters h-100">
+                                        <img src="../../images/grapes.png" alt="" class="small-slide-right">
+                                        <div class="col-9">
+                                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
+                                            <a href="all-products.html" class="text-dark mb-1 mt-2 h6 d-block">Berries</a>
+                                            <p class="text-secondary small">Strawberries, Raspberries, Blueberries</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h6 class="subtitle">Products <a href="all-products.html" class="float-right small">View All</a></h6>
+            <div class="row" id="rowitem">
+
+            </div>
+        </div>
+        <div class="container-fluid bg-warning text-white my-3">
+            <div class="row">
+                <div class="container">
+                    <div class="row  py-4 ">
+                        <div class="col">
+                            <h1 class="text-uppercase mb-3">Increase Your Sale of 20%</h1>
+                            <p class="mb-3">Use Coupan Code<br><span class="text-dark">DFR0020</span></p>
+                        </div>
+                        <div class="col-5 col-md-3 col-lg-2 col-xl-2">
+                            <img src="../../images/banana.png" alt="" class="mw-100 mt-3">
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col">
+                            <p>Purchase Item to lowest price,Resale Your second Hand stuff</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+        <div class="container mb-3">
+            <div class="row">
+                <div class="col text-center">
+                    <h5 class="subtitle mb-1">Most Exciting Feature</h5>
+                    <p class="text-secondary">Take a look at our services</p>
+                </div>
+            </div>
+            <div class="row text-center mt-4">
+                <div class="col-6 col-md-3">
+                    <div class="card shadow-sm border-0 mb-4">
+                        <div class="card-body">
+                            <i class="material-icons mb-4 md-36 text-template">card_giftcard</i>
+                            <h2>2546</h2>
+                            <p class="text-secondary text-mute">Home delivery</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card shadow-sm border-0 mb-4">
+                        <div class="card-body">
+                            <i class="material-icons mb-4 md-36 text-template">subscriptions</i>
+                            <h2>635</h2>
+                            <p class="text-secondary text-mute">Monthly Billed</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card shadow-sm border-0 mb-4">
+                        <div class="card-body">
+                            <i class="material-icons mb-4 md-36 text-template">local_florist</i>
+                            <h2>1542</h2>
+                            <p class="text-secondary text-mute">Eco environment</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card shadow-sm border-0 mb-4">
+                        <div class="card-body">
+                            <i class="material-icons mb-4 md-36 text-template">location_city</i>
+                            <h2>10%</h2>
+                            <p class="text-secondary text-mute">Get Reduction</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="no-gutters">
+                <div class="col-auto mx-auto">
+                    <div class="row no-gutters justify-content-center">
+                        <div class="col-auto">
+                            <a href="#" class="btn btn-link-default active">
+                                <i class="material-icons">store_mall_directory</i>
+                            </a>
+                        </div>
+                        <div class="col-auto">
+                            <a href="../announce/showannounce.html" class="btn btn-link-default">
+                                <i class="material-icons">announcement</i>
+                            </a>
+                        </div>
+                        <div class="col-auto">
+                            <a href="#" class="btn btn-default shadow centerbutton" onclick="GoToCart()">
+                                <i class="material-icons">local_mall</i>
+                                <span class="cart_counter" id="nbritem"></span>
+                            </a>
+                        </div>
+                        <div class="col-auto">
+                            <a href="../profile/profile.html" class="btn btn-link-default">
+                                <i class="material-icons">account_circle</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    <!-- notification
+    <div class="notification bg-white shadow border-primary">
+        <div class="row">
+            <div class="col-auto align-self-center pr-0">
+                <i class="material-icons text-primary md-36">fullscreen</i>
+            </div>
+            <div class="col">
+                <h6>Viewing in Phone?</h6>
+                <p class="mb-0 text-secondary">Double tap to enter into fullscreen mode for each page.</p>
+            </div>
+            <div class="col-auto align-self-center pl-0">
+                <button class="btn btn-link closenotification"><i class="material-icons text-secondary text-mute md-18 ">close</i></button>
+            </div>
+        </div>
+    </div>
+     -->
+    <!-- notification ends -->
+    
+    
+    <!-- jquery, popper and bootstrap js -->
+    <script src="../../js/jquery-3.3.1.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+
+    <!-- swiper js -->
+    <script src="../../js/swiper.min.js"></script>
+
+    <!-- template custom js -->
+    <script src="../../js/main.js"></script>
+
+    <!-- page level script -->
+    <script>
+        $(window).on('load', function() {
+            /* swiper slider carousel */
+            var swiper = new Swiper('.small-slide', {
+                slidesPerView: 'auto',
+                spaceBetween: 0,
+            });
+
+            var swiper = new Swiper('.news-slide', {
+                slidesPerView: 5,
+                spaceBetween: 0,
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+                breakpoints: {
+                    1024: {
+                        slidesPerView: 4,
+                        spaceBetween: 0,
+                    },
+                    768: {
+                        slidesPerView: 3,
+                        spaceBetween: 0,
+                    },
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 0,
+                    },
+                    320: {
+                        slidesPerView: 2,
+                        spaceBetween: 0,
+                    }
+                }
+            });
+
+            /* notification view and hide */
+            setTimeout(function() {
+                $('.notification').addClass('active');
+                setTimeout(function() {
+                    $('.notification').removeClass('active');
+                }, 3500);
+            }, 500);
+            $('.closenotification').on('click', function() {
+                $(this).closest('.notification').removeClass('active')
+            });
+        });
+
+    </script>
+   <!-- custom script -->
+   <script type="text/javascript" src="../../js/action/base.js"></script>
+   <script type="text/javascript" src="../../js/action/itemlist.js"></script>
+   <script type="text/javascript" src="../../js/action/login.js"></script>
+   <script type="text/javascript" src="../../js/action/customer.js"></script>
+   <script type="text/javascript" src="../../js/action/cart.js"></script>
+   <script type="text/javascript" src="../../js/other/homeexit.js"></script>
+</body>
+
+</html>
